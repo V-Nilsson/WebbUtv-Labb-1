@@ -1,0 +1,46 @@
+body {
+  min-height: 100vh;
+}
+
+#mynav {
+  background-color: #3e5c76;
+  color: white;
+}
+.cwhite {
+  color: white;
+}
+a:hover {
+  color: #f0ebd8;
+}
+.nav-item a:hover {
+  color: #f0ebd8;
+}
+.h3color {
+  color: #3e5c76;
+}
+#contact {
+  background-color: #748cab;
+  color: white;
+}
+p a {
+  color: inherit;
+}
+#aboutus {
+  background-color: #f0ebd8;
+  color: #1d2d44;
+}
+#courses {
+  background-color: #f0ebd8;
+  color: #1d2d44;
+  text-decoration: none;
+}
+#courseTitle div {
+  background-color: #f0ebd8;
+  color: #1d2d44;
+}
+/* #courseTitle div button {
+} */
+#popularCourses {
+  background-color: #f0ebd8;
+  color: #1d2d44;
+}
