@@ -59,7 +59,8 @@ fetch(jsonRequest)
     
 // }
 
-courses.sort((a, b) => a.courseNumber - b.courseNumber);
+//Sort courses on ratings
+courses.sort((a, b) => a.rating - b.rating);
 
 const students = [
   { name: "Alex",   grade: 15 },
