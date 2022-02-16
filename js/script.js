@@ -1,4 +1,4 @@
-const jsonRequest = new Request("/js/courses.json");
+const jsonRequest = new Request("../courses.json");
 
 const courses = [];
 
