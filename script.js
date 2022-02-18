@@ -15,28 +15,40 @@ class Course{
 }
 
 // Function to display courses on page
-function populateCourses(array) {
-    for (let i = 0; i < array.length; i++) {
-        const course = array[i];
-        let innerHTML = `<li>${course.courseNumber} <br>
-            ${course.courseTitle} </li>`;
-        document.getElementById("courses").innerHTML += innerHTML;
-    }
-}
+// function populateCourses(array) {
+//     for (let i = 0; i < array.length; i++) {
+//         const course = array[i];
+//         let innerHTML = `<li>${course.courseNumber} <br>
+//             ${course.courseTitle} </li>`;
+//         document.getElementById("courses").innerHTML += innerHTML;
+//     }
+// }
 // Function to show all available courses
+// Behöver jag tömma något för att det ska bli rätt när efter att en kurs har lagts till??
 function displayCards(array) {
     for (let i = 0; i < array.length; i++) {
         const course = array[i];
         let innerHTML = `
             <div class="card border-3">
             <div class="card-body text-center py-4" >
-            <h4>${course.courseTitle}</h4>
+            <h4 id="${course.courseTitle}">${course.courseTitle}</h4>
             <p>${course.description}</p>
-            <a href="#" class="btn btn-outline-primary mt-3">Köp</a>`;
+            <button href="#" class="btn btn-outline-primary mt-3">Köp</button>`;
         document.getElementById("courseTitle").innerHTML += innerHTML;
     }
 }
 
+function showCart(array) {
+    document.getElementById("showCart").innerHTML = "";
+    for (let i = 0; i < array.length; i++) {
+        const courseInCart = array[i];
+        let innerHTML = `
+            <p>${courseInCart.courseTitle}</p>
+            <button class="btn" onclick="removeFromCart()"><i class="bi bi-trash"></i></button>
+        `;
+        document.getElementById("showCart").innerHTML += innerHTML;
+    }
+}
 // Function to display top 3 courses
 // function displayPopularCourses(array) {
 //     array.
@@ -50,14 +62,30 @@ fetch(jsonRequest)
             const course = new Course(data[i]);
             courses.push(course);
         }
-        // populateCourses(courses)
         displayCards(courses)
     })
     .catch(console.error);
 
-// function addToCart() {
+    // ta in en parameter??
+function addToCart() {
+    // let courseToAdd;
+    // for (let i = 0; i < courses.length; i++) {
+    //     if (courses[i].courseTitle == ) {
+    //         courseToAdd = courses[i];
+    //     }
+    // }
+    cart.push(courses[1]);
+}
+// document.getElementById("uniquecourseTitle").id
+
+function removeFromCart() {
     
-// }
+}
+
+function checkout() {
+    cart.splice(0, cart.length);
+    showCart(cart);
+}
 
 //Sort courses on ratings
 courses.sort((a, b) => a.rating - b.rating);
