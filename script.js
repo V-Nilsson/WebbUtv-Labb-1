@@ -23,6 +23,43 @@ class Course{
 //         document.getElementById("courses").innerHTML += innerHTML;
 //     }
 // }
+function showCart(array) {
+    document.getElementById("showCart").innerHTML = "";
+    for (let i = 0; i < array.length; i++) {
+        const courseInCart = array[i];
+        let innerHTML = `
+            <div class="row">
+            <p class="text-center">${courseInCart.courseTitle}</p>
+            <button class="btn" onclick="removeFromCart()"><i class="bi bi-trash"></i></button>
+            </div>
+        `;
+        document.getElementById("showCart").innerHTML += innerHTML;
+    }
+} // <div class="col-lg-3 col-8">
+// Function to display top 3 courses
+function displayPopularCourses(array) {
+    for (let i = 0; i < 3; i++) {
+        const course = array[i];
+        let innerHTML = `
+            <div class="col-lg-3 col-8">
+            <div class="card border-2">
+              <div class="card-body text-center py-4">
+              <h4 class="card-title">
+                ${course.courseTitle}
+              </h4>
+              <p class="lead card-subtitle">
+                ${course.description}
+              </p>
+              <p class="card-text">
+                 Betyg: ${course.rating} / 10
+                </p>
+                <button class="btn btn-primary" onclick="addToCart();showCart(cart)">Köp</button>
+              </div>
+            </div>
+            `
+        document.getElementById("popularCourses").innerHTML += innerHTML;
+    }
+};
 // Function to show all available courses
 // Behöver jag tömma något för att det ska bli rätt när efter att en kurs har lagts till??
 function displayCards(array) {
@@ -38,22 +75,6 @@ function displayCards(array) {
     }
 }
 
-function showCart(array) {
-    document.getElementById("showCart").innerHTML = "";
-    for (let i = 0; i < array.length; i++) {
-        const courseInCart = array[i];
-        let innerHTML = `
-            <p>${courseInCart.courseTitle}</p>
-            <button class="btn" onclick="removeFromCart()"><i class="bi bi-trash"></i></button>
-        `;
-        document.getElementById("showCart").innerHTML += innerHTML;
-    }
-}
-// Function to display top 3 courses
-// function displayPopularCourses(array) {
-//     array.
-// }
-
 // Get info from json file
 fetch(jsonRequest)
     .then((response) => response.json())
@@ -62,6 +83,8 @@ fetch(jsonRequest)
             const course = new Course(data[i]);
             courses.push(course);
         }
+        courses.sort((a, b) => a.rating < b.rating);
+        displayPopularCourses(courses);
         displayCards(courses)
     })
     .catch(console.error);
@@ -86,17 +109,3 @@ function checkout() {
     cart.splice(0, cart.length);
     showCart(cart);
 }
-
-//Sort courses on ratings
-courses.sort((a, b) => a.rating - b.rating);
-
-
-// Temporary test of sorting arrays
-const students = [
-  { name: "Alex",   grade: 15 },
-  { name: "Devlin", grade: 15 },
-  { name: "Eagle",  grade: 13 },
-  { name: "Sam",    grade: 14 },
-];
-
-students.sort((firstItem, secondItem) => secondItem.grade - firstItem.grade);

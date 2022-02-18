@@ -53,63 +53,20 @@
     <!-- Display the Courses on cards -->
 
     <section id="coursesSection" class="mt-2">
-        <div class="container-lg my-5 text-center">
-          <!-- <div class="row"> -->
-            <h1 class="display-3">Våra kurser</h1>
-          <!-- </div> -->
-        </div>
-
-        <!-- Polular courses -->
-
-        <h2 class="display-6 text-center mb-5">Populära kurser</h2>
-        <div class="row align-items-center justify-content-center" id="popularCourses">
-          <div class="col-lg-3 col-8">
-            <div class="card border-2">
-              <div class="card-body text-center py-4">
-              <h4 class="card-title">
-                Course Title
-              </h4>
-              <p class="lead card-subtitle">
-                Course description
-              </p>
-              <p class="card-text">
-                  Rating
-                </p>
-              </div>
+        <div class="container-lg my-5">
+            <div class="text-center">
+              <h1 class="display-3">Våra kurser</h1>
+              <h2 class="display-6 mb-5">Populära kurser</h2>
+            </div>
+          
+          <!-- Polular courses -->
+          
+          <div class="row align-items-center justify-content-center" id="popularCourses">
+            <!-- <div class="col-lg-3 col-8 " > -->
+              
             </div>
           </div>
-          <div class="col-lg-3 col-8">
-            <div class="card border-2">
-              <div class="card-body text-center py-4">
-              <h4 class="card-title">
-                Course Title
-              </h4>
-              <p class="lead card-subtitle">
-                Course description
-              </p>
-              <p class="card-text">
-                  Rating
-                </p>
-                <button class="btn btn-primary" onclick="addToCart();showCart(cart)">Köp</button>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-8">
-            <div class="card border-2">
-              <div class="card-body text-center py-4">
-                <h4 class="card-title">
-                  Course Title
-                </h4>
-                <p class="lead card-subtitle">
-                  Course description
-                </p>
-                <p class="card-text">
-                  Rating
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+            
         <!-- End of popular courses -->
       
 
@@ -131,23 +88,65 @@
         </div>
 
       </div>
-      
-        <ul id="courses"></ul>
 
     </section>
+    <!-- Add course modal -->
+    <div class="container text-center my-5">
+      <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#addCourseModal">Lägg till kurs</button>
+    </div>
+    <div class="modal fade" id="addCourseModal" tabindex="-1" aria-labelledby="modal2-title" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modal2-title">
+              Lägg till kurs
+            </h5>
+            <button
+              class="btn-close"
+              type="button"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <label for="modal-courseNumber" class="form-label"
+              >Kursnummer:</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="modal-courseNumber"
+              placeholder="Kursnummer"
+            />
+            <label for="modal-courseTitle" class="form-label">Kurstitel:</label>
+            <input type="text" class="form-control" id="modal-courseTitle" placeholder="Namn på kursen">
+            <label for="modal-description" class="form-label">Beskrivning:</label>
+            <input type="text" class="form-control" id="modal-description" placeholder="Kort beskrivning av kursen">
+            <label for="modal-lengthInMinutes" class="form-label">Kursens Längd:</label>
+            <input type="number" class="form-control" id="modal-lengthInMinutes" placeholder="Kursens tid i minuter">
+          </div>
+          <div class="modal-footer">
+            <button class="btn">Lägg till kurs</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End of add course Modal -->
 
     <!-- Offcanvas for cart -->
     <div class="offcanvas offcanvas-end" id="cart">
-      <div class="offcanvas-header">
+      <div class="offcanvas-header ">
         <h1 class="offcanvas-title">Kundvagn</h1>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
       </div>
       <div class="offcanvas-body" id="showCart">
       </div>
-      <button class="btn btn-secondary" type="button" onclick="checkout()"
+      <button class="btn" type="button" onclick="checkout()"
               data-bs-toggle="modal"
               data-bs-target="#checkoutModal" >Köp</button>
     </div>
+    <!-- End of offcanvas for cart -->
+
     <!-- Modal for checkout -->
     <div
       class="modal fade"
@@ -169,11 +168,11 @@
           </div>
           <div class="modal-body">
             <p>
-              Ett bekräftelse kommer att skickas till din epost adress
+              Ett bekräftelse kommer att skickas till din epostadress
             </p>
+          </div>
         </div>
       </div>
-    </div>
     </div>
 
     <!-- Footer -->

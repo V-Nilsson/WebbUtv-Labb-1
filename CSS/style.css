@@ -1,7 +1,10 @@
 body {
   min-height: 100vh;
 }
-
+.btn {
+  background-color: #3e5c76;
+  color: white;
+}
 #mynav {
   background-color: #3e5c76;
   color: white;
