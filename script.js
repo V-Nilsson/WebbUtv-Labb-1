@@ -14,15 +14,6 @@ class Course{
     }
 }
 
-// Function to display courses on page
-// function populateCourses(array) {
-//     for (let i = 0; i < array.length; i++) {
-//         const course = array[i];
-//         let innerHTML = `<li>${course.courseNumber} <br>
-//             ${course.courseTitle} </li>`;
-//         document.getElementById("courses").innerHTML += innerHTML;
-//     }
-// }
 function showCart(array) {
     document.getElementById("showCart").innerHTML = "";
     for (let i = 0; i < array.length; i++) {
@@ -30,7 +21,7 @@ function showCart(array) {
         let innerHTML = `
             <div class="row">
             <p class="text-center">${courseInCart.courseTitle}</p>
-            <button class="btn" onclick="removeFromCart()"><i class="bi bi-trash"></i></button>
+            <button class="btn" onclick="removeFromCart(${courseInCart.courseNumber})"><i class="bi bi-trash"></i></button>
             </div>
         `;
         document.getElementById("showCart").innerHTML += innerHTML;
@@ -53,7 +44,7 @@ function displayPopularCourses(array) {
               <p class="card-text">
                  Betyg: ${course.rating} / 10
                 </p>
-                <button class="btn btn-primary" onclick="addToCart();showCart(cart)">Köp</button>
+                <button class="btn" onclick="addToCart(${course.courseNumber});showCart(cart)">Köp</button>
               </div>
             </div>
             `
@@ -70,7 +61,7 @@ function displayCards(array) {
             <div class="card-body text-center py-4" >
             <h4 id="${course.courseTitle}">${course.courseTitle}</h4>
             <p>${course.description}</p>
-            <button href="#" class="btn btn-outline-primary mt-3">Köp</button>`;
+            <button class="btn mt-3" onclick="addToCart(${course.courseNumber});showCart(cart)">Köp</button>`;
         document.getElementById("courseTitle").innerHTML += innerHTML;
     }
 }
@@ -89,20 +80,24 @@ fetch(jsonRequest)
     })
     .catch(console.error);
 
-    // ta in en parameter??
-function addToCart() {
-    // let courseToAdd;
-    // for (let i = 0; i < courses.length; i++) {
-    //     if (courses[i].courseTitle == ) {
-    //         courseToAdd = courses[i];
-    //     }
-    // }
-    cart.push(courses[1]);
+function addToCart(courseNumber) {
+    let courseToAdd;
+    for (let i = 0; i < courses.length; i++) {
+        if (courses[i].courseNumber == courseNumber ) {
+            courseToAdd = courses[i];
+        }
+    }
+//   TODO Make sure you can only add the same course once
+    cart.push(courseToAdd);
 }
-// document.getElementById("uniquecourseTitle").id
 
-function removeFromCart() {
-    
+function removeFromCart(courseNumber) {
+    for (let i = 0; i < cart.length; i++) {
+        if (courses[i].courseNumber == courseNumber) {
+            cart.splice(i, 1)
+        }
+    }
+    showCart(cart);
 }
 
 function checkout() {
