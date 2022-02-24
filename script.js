@@ -26,7 +26,7 @@ function showCart(array) {
         `;
         document.getElementById("showCart").innerHTML += innerHTML;
     }
-} // <div class="col-lg-3 col-8">
+} 
 // Function to display top 3 courses
 function displayPopularCourses(array) {
     for (let i = 0; i < 3; i++) {
@@ -88,12 +88,19 @@ function addToCart(courseNumber) {
         }
     }
 //   TODO Make sure you can only add the same course once
+    for (let i = 0; i < cart.length; i++) {
+        if (courseToAdd.courseNumber == cart[i].courseNumber)
+        {
+            window.alert("Denna kursen finns redan i din kundvagn!");
+            return;
+        }
+    }
     cart.push(courseToAdd);
 }
 
 function removeFromCart(courseNumber) {
     for (let i = 0; i < cart.length; i++) {
-        if (courses[i].courseNumber == courseNumber) {
+        if (cart[i].courseNumber == courseNumber) {
             cart.splice(i, 1)
         }
     }
@@ -103,4 +110,13 @@ function removeFromCart(courseNumber) {
 function checkout() {
     cart.splice(0, cart.length);
     showCart(cart);
+}
+
+// Get data from modal inputs and create a new course
+function addCourse() {
+    let number = document.getElementById("modal-courseNumber")
+    let title = document.getElementById("modal-courseTitle")
+    let description = document.getElementById("modalDescription")
+    let length = document.getElementById("modal-lengthInMinutes")
+    // const course = new Course();
 }

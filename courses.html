@@ -94,6 +94,7 @@
     <div class="container text-center my-5">
       <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#addCourseModal">Lägg till kurs</button>
     </div>
+
     <div class="modal fade" id="addCourseModal" tabindex="-1" aria-labelledby="modal2-title" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -109,28 +110,33 @@
             ></button>
           </div>
           <div class="modal-body">
-            <label for="modal-courseNumber" class="form-label"
+            <form>
+
+              <label for="modal-courseNumber" class="form-label"
               >Kursnummer:</label
-            >
-            <input
+              >
+              <input
               type="text"
               class="form-control"
               id="modal-courseNumber"
               placeholder="Kursnummer"
-            />
-            <label for="modal-courseTitle" class="form-label">Kurstitel:</label>
-            <input type="text" class="form-control" id="modal-courseTitle" placeholder="Namn på kursen">
-            <label for="modal-description" class="form-label">Beskrivning:</label>
-            <input type="text" class="form-control" id="modal-description" placeholder="Kort beskrivning av kursen">
-            <label for="modal-lengthInMinutes" class="form-label">Kursens Längd:</label>
-            <input type="number" class="form-control" id="modal-lengthInMinutes" placeholder="Kursens tid i minuter">
+              />
+              <label for="modal-courseTitle" class="form-label">Kurstitel:</label>
+              <input type="text" class="form-control" id="modal-courseTitle" placeholder="Namn på kursen">
+              <label for="modalDescription" class="form-label">Beskrivning:</label>
+              <input type="text" class="form-control" id="modal-description" placeholder="Kort beskrivning av kursen">
+              <label for="modal-lengthInMinutes" class="form-label">Kursens Längd:</label>
+              <input type="number" class="form-control" id="modal-lengthInMinutes" placeholder="Kursens tid i minuter">
+            </form>
           </div>
           <div class="modal-footer">
-            <button class="btn">Lägg till kurs</button>
+            <button class="btn" onclick="addCourse()">Lägg till kurs</button>
           </div>
         </div>
       </div>
     </div>
+   
+
     <!-- End of add course Modal -->
 
     <!-- Offcanvas for cart -->
