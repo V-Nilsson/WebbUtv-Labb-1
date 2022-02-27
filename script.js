@@ -86,7 +86,7 @@ function addToCart(courseNumber) {
             courseToAdd = courses[i];
         }
     }
-//   TODO Make sure you can only add the same course once
+
     for (let i = 0; i < cart.length; i++) {
         if (courseToAdd.courseNumber == cart[i].courseNumber)
         {
@@ -118,6 +118,10 @@ function addCourse() {
     let description = document.getElementById("modal-description").value
     let length = document.getElementById("modal-lengthInMinutes").value
     
+    var correctInput = validateInput();
+    if (!correctInput) {
+        return;
+    }
     const newCourse = {
         "courseNumber": number,
         "courseTitle": title,
@@ -134,4 +138,38 @@ function addCourse() {
     document.getElementById("modal-lengthInMinutes").value = "";
 
     displayCards(courses);
+}
+
+// Validate input to add course
+function validateInput() {
+    let number = document.getElementById("modal-courseNumber").value
+    let title = document.getElementById("modal-courseTitle").value
+    let description = document.getElementById("modal-description").value
+    let length = document.getElementById("modal-lengthInMinutes").value
+
+    // Courses cant have the same number
+    for (let i = 0; i < courses.length; i++) {
+        if (courses[i].courseNumber == number) {
+            alert("En kurs med detta nummer finns redan, försök igen")
+            return false;
+        }
+        
+    }
+
+    if (isNaN(number) || number == "") {
+        alert("Felaktigt format på kursens nummer, försök igen");
+        return false;
+    }
+
+    if (title == "" || description == "") {
+        alert("Fyll i alla uppgifter");
+        return false;
+    }
+
+    if (isNaN(length) || length == "" ) {
+        alert("Längden saknas eller är i fel format, försök igen");
+        return false;
+    }
+    
+    return true;
 }
