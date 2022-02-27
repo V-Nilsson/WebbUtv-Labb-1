@@ -137,7 +137,7 @@ function addCourse() {
     document.getElementById("modal-description").value = "";
     document.getElementById("modal-lengthInMinutes").value = "";
 
-    displayCards(courses);
+    displayNewCourse(course);
 }
 
 // Validate input to add course
@@ -172,4 +172,14 @@ function validateInput() {
     }
     
     return true;
+}
+
+function displayNewCourse(course) {
+    let innerHTML = `
+            <div class="card border-3">
+            <div class="card-body text-center py-4" >
+            <h4 id="${course.courseTitle}">${course.courseTitle}</h4>
+            <p>${course.description}</p>
+            <button class="btn mt-3" onclick="addToCart(${course.courseNumber});showCart(cart)">Köp</button>`;
+        document.getElementById("courseTitle").innerHTML += innerHTML;
 }
