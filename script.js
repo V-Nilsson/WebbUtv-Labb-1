@@ -52,7 +52,6 @@ function displayPopularCourses(array) {
     }
 };
 // Function to show all available courses
-// Behöver jag tömma något för att det ska bli rätt när efter att en kurs har lagts till??
 function displayCards(array) {
     for (let i = 0; i < array.length; i++) {
         const course = array[i];
