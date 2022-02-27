@@ -114,9 +114,25 @@ function checkout() {
 
 // Get data from modal inputs and create a new course
 function addCourse() {
-    let number = document.getElementById("modal-courseNumber")
-    let title = document.getElementById("modal-courseTitle")
-    let description = document.getElementById("modalDescription")
-    let length = document.getElementById("modal-lengthInMinutes")
-    // const course = new Course();
+    let number = document.getElementById("modal-courseNumber").value
+    let title = document.getElementById("modal-courseTitle").value
+    let description = document.getElementById("modal-description").value
+    let length = document.getElementById("modal-lengthInMinutes").value
+    
+    const newCourse = {
+        "courseNumber": number,
+        "courseTitle": title,
+        "description": description,
+        "lengthInMinutes": length,
+        "rating": null
+    }
+    const course = new Course(newCourse);
+    courses.push(course);
+
+    document.getElementById("modal-courseNumber").value = "";
+    document.getElementById("modal-courseTitle").value = "";
+    document.getElementById("modal-description").value = "";
+    document.getElementById("modal-lengthInMinutes").value = "";
+
+    displayCards(courses);
 }
